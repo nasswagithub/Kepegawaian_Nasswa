@@ -86,9 +86,9 @@ class _EmployeeListViewState extends State<EmployeeListView> {
             child: DataTable(
               columns: [
                 DataColumn(label: Text('ID')),
-                DataColumn(label: Text('Name')),
-                DataColumn(label: Text('Tenure')),
-                DataColumn(label: Text('Salary')),
+                DataColumn(label: Text('Nama')),
+                DataColumn(label: Text('Durasi')),
+                DataColumn(label: Text('Gaji')),
               ],
               rows: filteredEmployees
                   .map((employee) => DataRow(cells: [

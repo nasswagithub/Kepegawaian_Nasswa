@@ -1,6 +1,7 @@
 import 'package:dashboard_admin/constans.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class DashboardAdmin extends StatelessWidget {
   var height, width;
 

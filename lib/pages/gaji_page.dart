@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dashboard_admin/constans.dart';
 
 class Pegawai {
   final int id;
@@ -15,22 +14,36 @@ class Pegawai {
   });
 }
 
-class GajiNasswa extends StatelessWidget {
+class Gaji extends StatefulWidget {
+  const Gaji({super.key});
+
+  @override
+  State<Gaji> createState() => _GajiState();
+}
+
+class _GajiState extends State<Gaji> {
   final List<Pegawai> employees = [
     Pegawai(id: 1, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
     Pegawai(id: 2, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
     Pegawai(id: 3, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
-    // Disini tempat tambah data karyawan
+    Pegawai(id: 4, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
+    Pegawai(id: 5, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
+    Pegawai(id: 6, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
+    Pegawai(id: 7, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
+    Pegawai(id: 8, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
+    Pegawai(id: 9, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: myAppBar,
-        drawer: myDrawer,
-        body: EmployeeListView(employees: employees),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        centerTitle: true,
+        title: Text("Gaji & Tunjangan"),
       ),
+      body: EmployeeListView(employees: employees),
     );
   }
 }

@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-var myDefaultBackground = Colors.white;
-
-var myAppBar = AppBar(
-  //backgroundColor: const Color.fromARGB(255, 15, 75, 124),
-  backgroundColor: Colors.blueGrey,
-);
-
 var myDrawer = Drawer(
   backgroundColor: Colors.blueGrey,
   child: Column(children: const [
@@ -41,11 +34,47 @@ var myDrawer = Drawer(
     ),
     ListTile(
       leading: Icon(
-        Icons.app_registration_sharp,
+        Icons.book,
         color: Colors.white,
       ),
       title: Text(
         'D A T A  A B S E N S I',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    ),
+    ListTile(
+      leading: Icon(
+        Icons.attach_money,
+        color: Colors.white,
+      ),
+      title: Text(
+        'G A J I & T U N J A N G A N',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    ),
+    ListTile(
+      leading: Icon(
+        Icons.ballot,
+        color: Colors.white,
+      ),
+      title: Text(
+        'K O N T R A K  K E R J A',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    ),
+    ListTile(
+      leading: Icon(
+        Icons.calendar_month,
+        color: Colors.white,
+      ),
+      title: Text(
+        'D A T A  C U T I',
         style: TextStyle(
           color: Colors.white,
         ),

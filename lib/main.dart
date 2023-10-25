@@ -1,6 +1,4 @@
-import 'package:dashboard_admin/dashboard_admin.dart';
-import 'package:dashboard_admin/dashboard_hrd.dart';
-import 'package:dashboard_admin/penggajian/gaji_nasswa.dart';
+import 'package:dashboard_admin/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,9 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: DashboardAdmin(),
-      home: GajiNasswa(),
-      //home: DashboardHrd(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: WelcomePage(),
     );
   }
 }

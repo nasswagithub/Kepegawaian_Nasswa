@@ -21,11 +21,11 @@ class HomePage extends StatelessWidget {
   ];
 
   List totKaryawan = [
+    "2",
     "3",
-    "6",
-    "5",
     "4",
     "5",
+    "3",
   ];
 
   List<Color> catColors = [
@@ -295,10 +295,10 @@ class HomePage extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 10),
+                              vertical: 15, horizontal: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
+                            color: Colors.blueGrey,
                           ),
                           child: Column(
                             children: [
@@ -308,8 +308,8 @@ class HomePage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(25),
                                   child: Image.asset(
                                     "images/${imgList[index]}.jpg",
-                                    width: 300,
-                                    height: 300,
+                                    width: 200,
+                                    height: 200,
                                   ),
                                 ),
                               ),
@@ -319,16 +319,16 @@ class HomePage extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.black.withOpacity(0.5),
+                                  color: Colors.white,
                                 ),
                               ),
                               SizedBox(height: 10),
                               Text(
                                 "${totKaryawan[index]} karyawan",
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black.withOpacity(0.5),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white,
                                 ),
                               ),
                             ],

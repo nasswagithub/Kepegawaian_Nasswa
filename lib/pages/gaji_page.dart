@@ -1,18 +1,5 @@
+import 'package:dashboard_admin/karyawan.dart';
 import 'package:flutter/material.dart';
-
-class Pegawai {
-  final int id;
-  final String nama;
-  final int durasi;
-  final int gaji;
-
-  Pegawai({
-    required this.id,
-    required this.nama,
-    required this.durasi,
-    required this.gaji,
-  });
-}
 
 class Gaji extends StatefulWidget {
   const Gaji({super.key});
@@ -22,18 +9,6 @@ class Gaji extends StatefulWidget {
 }
 
 class _GajiState extends State<Gaji> {
-  final List<Pegawai> employees = [
-    Pegawai(id: 1, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
-    Pegawai(id: 2, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
-    Pegawai(id: 3, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
-    Pegawai(id: 4, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
-    Pegawai(id: 5, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
-    Pegawai(id: 6, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
-    Pegawai(id: 7, nama: 'Jung Jaehyun', durasi: 5, gaji: 5000000),
-    Pegawai(id: 8, nama: 'Hwang Eunbi', durasi: 3, gaji: 4500000),
-    Pegawai(id: 9, nama: 'Jeon Wonwoo', durasi: 8, gaji: 6000000),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +24,7 @@ class _GajiState extends State<Gaji> {
 }
 
 class EmployeeListView extends StatefulWidget {
-  final List<Pegawai> employees;
+  final List<Karyawan> employees;
 
   EmployeeListView({required this.employees});
 
@@ -58,7 +33,7 @@ class EmployeeListView extends StatefulWidget {
 }
 
 class _EmployeeListViewState extends State<EmployeeListView> {
-  List<Pegawai> filteredEmployees = [];
+  List<Karyawan> filteredEmployees = [];
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -74,8 +49,10 @@ class _EmployeeListViewState extends State<EmployeeListView> {
         .where((employee) =>
             employee.id.toString().contains(searchTerm) ||
             employee.nama.toLowerCase().contains(searchTerm) ||
-            employee.durasi.toString().contains(searchTerm) ||
-            employee.gaji.toString().contains(searchTerm))
+            employee.jabatan.toLowerCase().contains(searchTerm) ||
+            employee.jamKerja.toString().contains(searchTerm) ||
+            employee.gajiPerjam.toString().contains(searchTerm) ||
+            employee.tunjangan.toString().contains(searchTerm))
         .toList();
     setState(() {});
   }
@@ -89,7 +66,8 @@ class _EmployeeListViewState extends State<EmployeeListView> {
           child: TextField(
             controller: searchController,
             decoration: InputDecoration(
-              labelText: 'Filter berdasarkan ID, Nama, Durasi, Gaji',
+              labelText:
+                  'Filter berdasarkan ID, Nama, Jabatan, Jam Kerja, Gaji per Jam',
             ),
           ),
         ),
@@ -100,17 +78,27 @@ class _EmployeeListViewState extends State<EmployeeListView> {
               columns: [
                 DataColumn(label: Text('ID')),
                 DataColumn(label: Text('Nama')),
-                DataColumn(label: Text('Durasi')),
-                DataColumn(label: Text('Gaji')),
+                DataColumn(label: Text('Jabatan')),
+                DataColumn(label: Text('Jam Kerja')),
+                DataColumn(label: Text('Gaji per Jam')),
+                DataColumn(label: Text('Tunjangan')),
+                DataColumn(label: Text('Total Gaji')),
               ],
-              rows: filteredEmployees
-                  .map((employee) => DataRow(cells: [
-                        DataCell(Text(employee.id.toString())),
-                        DataCell(Text(employee.nama)),
-                        DataCell(Text(employee.durasi.toString())),
-                        DataCell(Text(employee.gaji.toString())),
-                      ]))
-                  .toList(),
+              rows: filteredEmployees.map((employee) {
+                employee.totalGaji = (employee.jamKerja * employee.gajiPerjam +
+                    employee.tunjangan);
+                return DataRow(cells: [
+                  DataCell(Text(employee.id.toString())),
+                  DataCell(Text(employee.nama)),
+                  DataCell(Text(employee.jabatan)),
+                  DataCell(Text(employee.jamKerja.toString())),
+                  DataCell(Text(employee.gajiPerjam.toString())),
+                  DataCell(Text(employee.tunjangan.toString())),
+                  DataCell(
+                    Text(employee.totalGaji.toStringAsFixed(2)),
+                  ),
+                ]);
+              }).toList(),
             ),
           ),
         ),
